@@ -7,7 +7,6 @@
 #include <vector>
 
 #include <opencv\cv.hpp>
-#include <opencv2\stitching.hpp>
 
 namespace MultimediaTools {
 
@@ -17,20 +16,19 @@ namespace MultimediaTools {
       return (rgb_pixel.val[0] * 0.114 + rgb_pixel.val[1] * 0.587 + rgb_pixel.val[2] * 0.299) / 255.0;
     }
 
-    cv::Scalar Kurtosis(const cv::Mat &image) {
-
+    cv::Vec3d Kurtosis(const cv::Mat &image) {
       cv::Mat gray_image;
       cv::cvtColor(image, gray_image, cv::COLOR_BGR2GRAY);
-
-      cv::Scalar kurt(0, 0, 0), mean, stddev;
+      cv::Vec3d kurt(0, 0, 0), mean, stddev;
       cv::meanStdDev(gray_image, mean, stddev, cv::Mat());
-      cv::Scalar den(0, 0, 0);
+
+      cv::Vec3d den(0, 0, 0);
 
       for (int r = 0; r < image.rows; r++) {
         for (int c = 0; c < image.cols; c++) {
-          cv::Scalar sum;
+          cv::Vec3d sum;
           for (size_t pixel_index = 0; pixel_index < 3; ++pixel_index) {
-            sum.val[pixel_index] = gray_image.at<cv::Vec3b>(r, c).val[pixel_index] - mean.val[pixel_index];
+            sum.val[pixel_index] = gray_image.at<uchar>(r, c) - mean.val[pixel_index];
           }
 
           for (size_t pixel_index = 0; pixel_index < 3; ++pixel_index) {
@@ -45,7 +43,7 @@ namespace MultimediaTools {
 
       const int N = image.rows * image.cols;
 
-      kurt.val[0] = (kurt.val[0] * N * (N + 1) * (N - 1) / (den.val[0] * den.val[0] * (N - 2)*(N - 3))) - (3 * (N - 1)*(N - 1) / ((N - 2)*(N - 3)));
+      kurt.val[0] = (kurt.val[0] * N * (N + 1) * (N - 1) / (den.val[0] * den.val[0] * (N - 2) * (N - 3))) - (3 * (N - 1) * (N - 1) / ((N - 2) * (N - 3)));
 
       for (size_t pixel_index = 1; pixel_index < 3; ++pixel_index) {
         kurt.val[pixel_index] = (kurt.val[pixel_index] * N / (den.val[pixel_index] * den.val[pixel_index])) - 3;
