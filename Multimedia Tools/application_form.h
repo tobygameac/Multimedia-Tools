@@ -67,6 +67,7 @@ namespace MultimediaTools {
     System::Windows::Forms::Button ^edit_videos_button_;
     System::Windows::Forms::Button ^stitch_button_;
     System::Windows::Forms::Button ^select_keyframes_button_;
+    System::Windows::Forms::Button ^invert_colors_button_;
 
     System::Windows::Forms::NumericUpDown ^width_numeric_up_down_;
     System::Windows::Forms::NumericUpDown ^height_numeric_up_down_;
@@ -92,6 +93,7 @@ namespace MultimediaTools {
     void InitializeComponent(void) {
       this->menu_strip_ = (gcnew System::Windows::Forms::MenuStrip());
       this->file_tool_strip_menu_item_ = (gcnew System::Windows::Forms::ToolStripMenuItem());
+      this->open_images_tool_strip_menu_item_ = (gcnew System::Windows::Forms::ToolStripMenuItem());
       this->open_videos_tool_strip_menu_item_ = (gcnew System::Windows::Forms::ToolStripMenuItem());
       this->mode_tool_strip_menu_item_ = (gcnew System::Windows::Forms::ToolStripMenuItem());
       this->edit_videos_button_ = (gcnew System::Windows::Forms::Button());
@@ -104,7 +106,7 @@ namespace MultimediaTools {
       this->flip_check_box_ = (gcnew System::Windows::Forms::CheckBox());
       this->transpose_check_box_ = (gcnew System::Windows::Forms::CheckBox());
       this->select_keyframes_button_ = (gcnew System::Windows::Forms::Button());
-      this->open_images_tool_strip_menu_item_ = (gcnew System::Windows::Forms::ToolStripMenuItem());
+      this->invert_colors_button_ = (gcnew System::Windows::Forms::Button());
       this->menu_strip_->SuspendLayout();
       (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->width_numeric_up_down_))->BeginInit();
       (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->height_numeric_up_down_))->BeginInit();
@@ -135,10 +137,16 @@ namespace MultimediaTools {
       this->file_tool_strip_menu_item_->Size = System::Drawing::Size(37, 20);
       this->file_tool_strip_menu_item_->Text = L"File";
       // 
+      // open_images_tool_strip_menu_item_
+      // 
+      this->open_images_tool_strip_menu_item_->Name = L"open_images_tool_strip_menu_item_";
+      this->open_images_tool_strip_menu_item_->Size = System::Drawing::Size(144, 22);
+      this->open_images_tool_strip_menu_item_->Text = L"Open Images";
+      // 
       // open_videos_tool_strip_menu_item_
       // 
       this->open_videos_tool_strip_menu_item_->Name = L"open_videos_tool_strip_menu_item_";
-      this->open_videos_tool_strip_menu_item_->Size = System::Drawing::Size(152, 22);
+      this->open_videos_tool_strip_menu_item_->Size = System::Drawing::Size(144, 22);
       this->open_videos_tool_strip_menu_item_->Text = L"Open Videos";
       // 
       // mode_tool_strip_menu_item_
@@ -248,17 +256,21 @@ namespace MultimediaTools {
       this->select_keyframes_button_->Text = L"Select keyframes";
       this->select_keyframes_button_->UseVisualStyleBackColor = true;
       // 
-      // open_images_tool_strip_menu_item_
+      // invert_colors_button_
       // 
-      this->open_images_tool_strip_menu_item_->Name = L"open_images_tool_strip_menu_item_";
-      this->open_images_tool_strip_menu_item_->Size = System::Drawing::Size(152, 22);
-      this->open_images_tool_strip_menu_item_->Text = L"Open Images";
+      this->invert_colors_button_->Location = System::Drawing::Point(13, 227);
+      this->invert_colors_button_->Name = L"invert_colors_button_";
+      this->invert_colors_button_->Size = System::Drawing::Size(75, 23);
+      this->invert_colors_button_->TabIndex = 11;
+      this->invert_colors_button_->Text = L"Invert colors";
+      this->invert_colors_button_->UseVisualStyleBackColor = true;
       // 
       // ApplicationForm
       // 
       this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
       this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
       this->ClientSize = System::Drawing::Size(284, 262);
+      this->Controls->Add(this->invert_colors_button_);
       this->Controls->Add(this->select_keyframes_button_);
       this->Controls->Add(this->transpose_check_box_);
       this->Controls->Add(this->flip_check_box_);

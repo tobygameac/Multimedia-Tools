@@ -20,6 +20,7 @@ namespace MultimediaTools {
     select_keyframes_button_->Click += gcnew System::EventHandler(this, &MultimediaTools::ApplicationForm::OnButtonsClick);
     edit_videos_button_->Click += gcnew System::EventHandler(this, &MultimediaTools::ApplicationForm::OnButtonsClick);
     stitch_button_->Click += gcnew System::EventHandler(this, &MultimediaTools::ApplicationForm::OnButtonsClick);
+    invert_colors_button_->Click += gcnew System::EventHandler(this, &MultimediaTools::ApplicationForm::OnButtonsClick);
 
     flip_check_box_->CheckedChanged += gcnew System::EventHandler(this, &MultimediaTools::ApplicationForm::OnCheckedChanged);
   }
@@ -199,6 +200,15 @@ namespace MultimediaTools {
       cv::imwrite(source_images_file_directory + "Pano.jpg", pano);
 
       std::cout << "Everything done\n";
+    } else if (sender == invert_colors_button_) {
+      for (size_t i = 0; i < source_images_file_path.size(); ++i) {
+        cv::Mat image = cv::imread(source_images_file_path[i]);
+        cv::bitwise_not(image, image);
+
+        const std::string edited_image_path = source_images_file_directory + "inverted_" + source_images_file_name[i] + source_images_file_extension[i];
+
+        cv::imwrite(edited_image_path, image);
+      }
     }
   }
 
