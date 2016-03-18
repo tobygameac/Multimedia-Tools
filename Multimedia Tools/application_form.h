@@ -9,7 +9,7 @@
 
 #include <msclr\marshal_cppstd.h>
 
-#include "keyframse_selector.h"
+#include "keyframes_selector.h"
 
 namespace MultimediaTools {
 

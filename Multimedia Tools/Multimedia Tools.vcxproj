@@ -150,6 +150,11 @@
     </ClInclude>
     <ClInclude Include="keyframse_selector.h" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="application_form.resx">
+      <DependentUpon>application_form.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
