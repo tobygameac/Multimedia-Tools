@@ -148,7 +148,7 @@
     <ClInclude Include="application_form.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="keyframse_selector.h" />
+    <ClInclude Include="keyframes_selector.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="application_form.resx">

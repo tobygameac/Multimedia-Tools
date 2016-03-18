@@ -23,8 +23,13 @@
     <ClInclude Include="application_form.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="keyframse_selector.h">
+    <ClInclude Include="keyframes_selector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="application_form.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
